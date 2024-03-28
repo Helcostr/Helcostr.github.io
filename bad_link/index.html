@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Example Webpage - "Bad Link Theme"</title>
+  <style type="text/css">
+    :root {
+      --black: #000;
+      --red: #e32028;
+      --white: #fff;
+    }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Ubuntu Mono', monospace;
+      display: grid;
+      place-items: center;
+      height: 100vh;
+      width: 100%;
+      margin: 0px;
+    }
+    div {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>What did I just say, what if this is a malicious link??? &gt;:(</h1>
+    <p>For those who are just curious of the content, hiiii!!!</p>
+    <p id="scary">Secret msg</p>
+  </div>
+  <script>
+    (async ()=>{
+      const sleep = int => new Promise(e=>setTimeout(e,int));
+      const letters = 'abcdefghijklmnopqrstuvwxyz';
+      const ref = document.getElementById('scary');
+
+      while (1) {
+        ref.innerText = ref.innerText.split('')
+        .map((letter, index) => {
+          if (letter === ' ') return ' ';
+          return letters[Math.floor(Math.random() * 26)]
+        })
+        .join('');
+        await sleep(60);
+      }
+    })();
+  </script>
+</body>
+</html>
